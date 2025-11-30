@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dp:np:w": "sls deploy --verbose -r us-west-2 -s np --force",
+    "dp:np:w:dryrun": "sls deploy --verbose -r us-west-2 -s np --noDeploy",
     "dp:rm:w": "sls remove --verbose -r us-west-2 -s np"
   },
   "author": "",
