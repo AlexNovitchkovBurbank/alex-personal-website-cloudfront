@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dp:np:w": "sls deploy --verbose -r us-west-2 -s np --force",
     "dp:rm:w": "sls remove --verbose -r us-west-2 -s np",
-    "invalidate": "aws cloudfront create-invalidation --distribution-id  --paths /*"
+    "invalidate": "aws cloudfront create-invalidation --distribution-id E1SBT7W0DCI9CJ --paths /*"
   },
   "author": "",
   "license": "ISC",
