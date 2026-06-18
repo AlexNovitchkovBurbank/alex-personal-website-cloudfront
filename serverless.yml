@@ -78,19 +78,6 @@ resources:
               - GET
               - HEAD
           CacheBehaviors:
-            - PathPattern: "/*"
-              TargetOriginId: ${self:provider.environment.CODE_BUCKET_NAME}
-              ForwardedValues:
-                Cookies:
-                  Forward: "none"
-                QueryString: "false"
-              ViewerProtocolPolicy: https-only
-              AllowedMethods:
-                - GET
-                - HEAD
-              CachedMethods:
-                - GET
-                - HEAD
             - PathPattern: "designs/*"
               TargetOriginId: ${self:provider.environment.PROJECT_DATA_BUCKET_NAME}
               ForwardedValues:
@@ -175,7 +162,7 @@ resources:
               Resource: !Sub "arn:aws:s3:::${self:provider.environment.CODE_BUCKET_NAME}/*"
               Condition:
                 StringEquals:
-                  AWS:SourceArn: !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution}" # reference a resource so not the id
+                  aws:SourceArn: !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution}" # reference a resource so not the id
             # Protect bucket policy from modification
             - Sid: DenyPolicyChanges
               Effect: Deny
@@ -217,7 +204,7 @@ resources:
               Resource: !Sub "arn:aws:s3:::${self:provider.environment.PROJECT_DATA_BUCKET_NAME}/*"
               Condition:
                 StringEquals:
-                  AWS:SourceArn: !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution}"
+                  aws:SourceArn: !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution}"
             # Protect bucket policy from modification
             - Sid: DenyPolicyChanges
               Effect: Deny
